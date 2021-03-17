@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>FetchDemo using Node JS</title>
+</head>
+
+<body>
+    <h1>Tejaswi computes</h1>
+    <input type="number" id="demo1" >
+    <input type="number" id="demo2">
+   <button type="button"onclick="remotecompute()">Remote compute</button>
+        <div id="result">
+        Output will be  displayed here
+        </div>
+
+</body>
+<script>
+    function remotecompute() {
+        var p = document.getElementById("demo1").value;
+        var q = document.getElementById("demo2").value;
+        console.log(p)
+        fetch(`http://127.0.0.1:3001/?data=${p}&y=${q}`).then( (resp) => { return resp.text()}) .then (text =>{
+                    console.log(text);
+
+
+            document.getElementById("result").innerHTML = text;
+        }).catch(error =>{
+                    document.getElementById("result").innerHTML=error;
+                })
+            }
+
+</script>
+
+</html>
