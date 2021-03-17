@@ -13,22 +13,16 @@ const server =
       fake_url = "https://fake.com/path" + req.url
       const url = new URL(fake_url)
       const search_params = url.searchParams
-
-      
       console.log("Queries: " + search_params)
-
-      if (req.method === 'GET' ) {
-        
-        var x = Number(search_params.get("x"));
-       
-        console.log("Look for query parameter data: " + search_params.get("data"))
-
-        // Process the queries here
-        res.statusCode = 200      //code for OK
-        res.setHeader('Content-Type', 'text/plain') 
-        res.write(`Math.exp(${x}) is ${Math.exp(x)} and Math.exmp1(${x}) is ${Math.expm1(x)}`)
-        res.end();
-      
+        if (req.method === 'GET' ) {
+          console.log("Look for query parameter data: " + search_params.get("data"))
+          x=search_params.get("data");
+          y = search_params.get("y")
+          // Process the queries here
+          res.statusCode = 200      //code for OK
+          res.setHeader('Content-Type', 'text/plain') 
+          res.write(`f(${x}) is ${Math.exp(x)} and f(${y}) is ${Math.expm1(y)}`)
+          res.end();
         
       } else {
         console.log("Status 404")
