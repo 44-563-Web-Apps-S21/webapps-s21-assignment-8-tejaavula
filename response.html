@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment-8 BONUS</title>
+    <style>
+        #h1{
+            padding: 10px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+        }
+       .myDiv{
+        background-color:lightpink; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="Introduction">
+        <h1 id="h1">Advices</h1>
+        <h4>To get advices click on the button</h4>
+        <button  class="myDiv" onclick="getAdvices()" >Get an Advice</button>
+       
+    </div>
+
+    <div id="Advices"></div>
+    <script>
+        const getAdvices = () => {
+            fetch('http://127.0.0.1:3001').then(
+                (res) => {
+                    console.log(res)
+                    return res.text()
+                }
+            ).then(data => {
+            
+                console.log(data)
+                document.getElementById("Advices").innerHTML = data
+            }).catch(err => {
+                document.getElementById("Advices").innerHTML = err
+            })
+        }
+    </script>
+</body>
+</html>
